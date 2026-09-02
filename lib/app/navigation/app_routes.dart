@@ -8,7 +8,7 @@ import 'package:portfolio/core/utils/logger_utils.dart';
 final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
     debugLogDiagnostics: true,
-    initialLocation: AppRoutes.splash,
+    initialLocation: AppRoutes.home,
     observers: [routeTracker],
     redirect: (context, state) {
       final loc = state.uri.toString();
@@ -22,7 +22,7 @@ final routerProvider = Provider<GoRouter>((ref) {
       GoRoute(
         name: 'home',
         path: AppRoutes.home,
-        builder: (_, _) => const PortfolioApp(),
+        builder: (_, _) => const HomeScreen(),
       ),
     ],
   );

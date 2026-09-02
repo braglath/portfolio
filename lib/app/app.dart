@@ -1,7 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:portfolio/app/navigation/app_routes.dart';
+import 'package:portfolio/shared/widgets/global_loader.dart';
 
-class PortfolioApp extends StatelessWidget {
+class PortfolioApp extends ConsumerWidget {
   const PortfolioApp({super.key});
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final router = ref.watch(routerProvider);
+    // final appLocale = ref.watch(appLocaleProvider);
+
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      // locale: appLocale,
+      // supportedLocales: AppLocalizations.supportedLocales,
+      // localizationsDelegates: AppLocalizations.localizationsDelegates,
+      // theme: AppTheme.darkTheme,
+      themeMode: ThemeMode.dark,
+      routerConfig: router,
+      builder: (context, child) {
+        return Stack(children: [child!, const GlobalLoader()]);
+      },
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   // This widget is the root of your application.
   @override
