@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio/app/navigation/app_routes.dart';
+import 'package:portfolio/app/theme/app_theme.dart';
 import 'package:portfolio/shared/widgets/global_loader.dart';
 
 class PortfolioApp extends ConsumerWidget {
@@ -15,8 +16,7 @@ class PortfolioApp extends ConsumerWidget {
       // locale: appLocale,
       // supportedLocales: AppLocalizations.supportedLocales,
       // localizationsDelegates: AppLocalizations.localizationsDelegates,
-      // theme: AppTheme.darkTheme,
-      themeMode: ThemeMode.dark,
+      theme: AppTheme.light,
       routerConfig: router,
       builder: (context, child) {
         return Stack(children: [child!, const GlobalLoader()]);
