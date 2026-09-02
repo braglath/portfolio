@@ -1,0 +1,3 @@
+class AppPresentationTexts {
+  AppPresentationTexts._();
+}
