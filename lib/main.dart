@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:portfolio/app/app.dart';
 import 'package:portfolio/core/utils/logger_utils.dart';
 
@@ -27,6 +28,7 @@ void main() {
   runZonedGuarded(
     () async {
       WidgetsFlutterBinding.ensureInitialized(); // ← inside zone
+      await ScreenUtil.ensureScreenSize();
       runApp(const ProviderScope(child: PortfolioApp()));
     },
     (error, stack) {

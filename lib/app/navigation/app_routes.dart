@@ -1,9 +1,10 @@
 // app_router.dart
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:portfolio/app/app.dart';
+import 'package:portfolio/app/navigation/app_shell.dart';
 import 'package:portfolio/app/navigation/route_tracker.dart';
 import 'package:portfolio/core/utils/logger_utils.dart';
+import 'package:portfolio/features/home/presentation/home_screen.dart';
 
 final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
@@ -19,10 +20,17 @@ final routerProvider = Provider<GoRouter>((ref) {
       return null;
     },
     routes: [
-      GoRoute(
-        name: 'home',
-        path: AppRoutes.home,
-        builder: (_, _) => const HomeScreen(),
+      ShellRoute(
+        builder: (context, state, child) {
+          return AppShell(child: child);
+        },
+        routes: [
+          GoRoute(
+            name: 'home',
+            path: AppRoutes.home,
+            builder: (_, _) => const HomeScreen(),
+          ),
+        ],
       ),
     ],
   );

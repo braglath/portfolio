@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/app/theme/app_colors.dart';
-import 'package:portfolio/app/theme/app_text_styles.dart';
 import 'package:portfolio/core/constants/app_texts.dart';
 
 class AppTheme {
@@ -24,21 +23,27 @@ class AppTheme {
       onError: AppColors.textOnPrimary,
     ),
 
+    // Keep ThemeData typography non-responsive.
+    // Feature UI will use AppTextStyles(context).
     textTheme: const TextTheme(
-      displayLarge: AppTextStyles.displayLarge,
-      displayMedium: AppTextStyles.displayMedium,
-
-      headlineLarge: AppTextStyles.headingLarge,
-      headlineMedium: AppTextStyles.headingMedium,
-      headlineSmall: AppTextStyles.headingSmall,
-
-      bodyLarge: AppTextStyles.bodyLarge,
-      bodyMedium: AppTextStyles.bodyMedium,
-      bodySmall: AppTextStyles.bodySmall,
-
-      labelLarge: AppTextStyles.button,
-      labelMedium: AppTextStyles.labelMedium,
-      labelSmall: AppTextStyles.label,
+      bodyLarge: TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w300,
+        color: AppColors.textSecondary,
+        height: 1.6,
+      ),
+      bodyMedium: TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w400,
+        color: AppColors.textSecondary,
+        height: 1.6,
+      ),
+      bodySmall: TextStyle(
+        fontSize: 14,
+        fontWeight: FontWeight.w400,
+        color: AppColors.textSecondary,
+        height: 1.5,
+      ),
     ),
 
     appBarTheme: const AppBarTheme(
@@ -66,16 +71,20 @@ class AppTheme {
         backgroundColor: AppColors.primary,
         foregroundColor: AppColors.textOnPrimary,
         elevation: 0,
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
-        textStyle: AppTextStyles.button,
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 18),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+        textStyle: const TextStyle(
+          fontSize: 15,
+          fontWeight: FontWeight.w500,
+          letterSpacing: 0.2,
+        ),
       ),
     ),
 
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         foregroundColor: AppColors.primary,
-        textStyle: AppTextStyles.button,
+        textStyle: const TextStyle(fontSize: 15, fontWeight: FontWeight.w500),
       ),
     ),
 
