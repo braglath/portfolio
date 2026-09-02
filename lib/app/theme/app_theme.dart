@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/app/theme/app_colors.dart';
 import 'package:portfolio/app/theme/app_text_styles.dart';
+import 'package:portfolio/core/constants/app_texts.dart';
 
 class AppTheme {
   AppTheme._();
@@ -8,7 +9,7 @@ class AppTheme {
   static ThemeData light = ThemeData(
     useMaterial3: true,
 
-    fontFamily: 'Geist',
+    fontFamily: AppTexts.geist,
 
     scaffoldBackgroundColor: AppColors.background,
 
