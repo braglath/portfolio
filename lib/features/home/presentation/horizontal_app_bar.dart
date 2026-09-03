@@ -34,11 +34,23 @@ class HorizontalAppBar extends StatelessWidget {
               _NavItem(
                 isActive: currentRoute == AppRoutes.home,
                 label: 'Home',
-                onTap: () {},
+                onTap: () => context.go(AppRoutes.home),
               ),
-              _NavItem(isActive: false, label: 'Works', onTap: () {}),
-              _NavItem(isActive: false, label: 'Services', onTap: () {}),
-              _NavItem(isActive: false, label: 'About me', onTap: () {}),
+              _NavItem(
+                isActive: currentRoute == AppRoutes.works,
+                label: 'Works',
+                onTap: () => context.go(AppRoutes.works),
+              ),
+              _NavItem(
+                isActive: currentRoute == AppRoutes.services,
+                label: 'Services',
+                onTap: () => context.go(AppRoutes.services),
+              ),
+              _NavItem(
+                isActive: currentRoute == AppRoutes.aboutMe,
+                label: 'About me',
+                onTap: () => context.go(AppRoutes.aboutMe),
+              ),
             ],
           ),
           const Spacer(),
@@ -76,16 +88,18 @@ class _NavItem extends StatelessWidget {
               label,
               style: AppTextStyles.bodyMedium(context).copyWith(
                 color: isActive ? AppColors.primary : AppColors.textPrimary,
+                fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
               ),
             ),
           ),
-          Container(
+          AnimatedContainer(
+            duration: const Duration(milliseconds: 300),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(2),
               color: isActive ? AppColors.primary : Colors.transparent,
             ),
-            width: 32.w,
-            height: 2.h,
+            width: isActive ? 32.w : 0,
+            height: isActive ? 2.h : 0,
           ),
         ],
       ),
