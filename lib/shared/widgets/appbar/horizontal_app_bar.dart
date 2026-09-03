@@ -5,6 +5,7 @@ import 'package:portfolio/app/navigation/app_routes.dart';
 import 'package:portfolio/app/theme/app_colors.dart';
 import 'package:portfolio/app/theme/app_text_styles.dart';
 import 'package:portfolio/core/utils/logger_utils.dart';
+import 'package:portfolio/shared/widgets/appbar/logo_text.dart';
 
 class HorizontalAppBar extends StatelessWidget {
   const HorizontalAppBar({super.key});
@@ -19,14 +20,7 @@ class HorizontalAppBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Text("B", style: AppTextStyles.displaySmall(context)),
-              Container(color: AppColors.textPrimary, width: 8, height: 8),
-            ],
-          ),
+          LogoText(),
           const Spacer(),
           // Navigation
           Row(

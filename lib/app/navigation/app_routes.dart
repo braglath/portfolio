@@ -22,9 +22,7 @@ final routerProvider = Provider<GoRouter>((ref) {
     },
     routes: [
       ShellRoute(
-        builder: (context, state, child) {
-          return AppShell(child: child);
-        },
+        builder: (context, state, child) => AppShell(child: child),
         routes: [
           GoRoute(
             name: '/',
