@@ -103,7 +103,7 @@ class _HoverTapMessageState extends State<HoverTapMessage> {
       onEnter: (_) => _activate(),
       onExit: (_) => _hide(),
       child: GestureDetector(
-        onTap: context.isMobile ? _activate : null,
+        onTap: context.isMobile || context.isTablet ? _activate : null,
         child: Stack(
           clipBehavior: Clip.none,
           alignment: Alignment.center,

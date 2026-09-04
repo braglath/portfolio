@@ -37,7 +37,14 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(width: 48.w),
-                Expanded(child: _HeroSkills()),
+                if (context.isDesktop) ...[
+                  Expanded(child: _HeroSkillsDesktop()),
+                ] else if (context.isTablet) ...[
+                  // if device widget is greater than 750px, then show the tablet widget
+                  if (MediaQuery.sizeOf(context).width > 750) ...[
+                    Expanded(child: _HeroSkillsTabletColumn()),
+                  ],
+                ],
               ],
             ),
           ),
@@ -48,46 +55,75 @@ class HomeScreen extends StatelessWidget {
   );
 }
 
-class _HeroSkills extends StatelessWidget {
-  const _HeroSkills();
+class _HeroSkillsDesktop extends StatelessWidget {
+  const _HeroSkillsDesktop();
 
   @override
-  Widget build(BuildContext context) {
-    return Stack(
-      clipBehavior: Clip.none,
-      children: [
-        MainServices(
-          top: 0.h,
-          left: 100.w,
-          right: 100.w,
-          bottom: 200.h,
-          assetImagePath: AppAssetPath.crossPlatform,
-          label: "Cross-Platform",
-        ),
+  Widget build(BuildContext context) => Stack(
+    clipBehavior: Clip.none,
+    children: [
+      PositionedHomeServices(
+        top: 0.h,
+        left: 100.w,
+        right: 100.w,
+        bottom: 200.h,
+        assetImagePath: AppAssetPath.crossPlatform,
+        label: "Cross-Platform",
+      ),
 
-        MainServices(
-          top: 200.h,
-          left: 400.w,
-          bottom: 150.h,
-          right: 0.w,
-          assetImagePath: AppAssetPath.architecture,
-          label: "Architecture",
-        ),
+      PositionedHomeServices(
+        top: 200.h,
+        left: 400.w,
+        bottom: 150.h,
+        right: 0.w,
+        assetImagePath: AppAssetPath.architecture,
+        label: "Architecture",
+      ),
 
-        MainServices(
-          top: 425.h,
-          left: 100.w,
-          right: 50.w,
-          bottom: 0.h,
-          assetImagePath: AppAssetPath.optimization,
-          label: "Optimization",
-        ),
-      ],
-    );
-  }
+      PositionedHomeServices(
+        top: 425.h,
+        left: 100.w,
+        right: 50.w,
+        bottom: 0.h,
+        assetImagePath: AppAssetPath.optimization,
+        label: "Optimization",
+      ),
+    ],
+  );
 }
 
-class MainServices extends StatelessWidget {
+class _HeroSkillsTabletColumn extends StatelessWidget {
+  const _HeroSkillsTabletColumn();
+
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.only(right: 18.0),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.end,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: _homeServices,
+    ),
+  );
+}
+
+List<HomeServices> get _homeServices => [
+  HomeServices(
+    assetImagePath: AppAssetPath.crossPlatform,
+    label: "Cross-Platform",
+  ),
+
+  HomeServices(
+    assetImagePath: AppAssetPath.architecture,
+    label: "Architecture",
+  ),
+
+  HomeServices(
+    assetImagePath: AppAssetPath.optimization,
+    label: "Optimization",
+  ),
+];
+
+class PositionedHomeServices extends StatelessWidget {
   final double? top;
   final double? left;
   final double? right;
@@ -96,7 +132,7 @@ class MainServices extends StatelessWidget {
   final String assetImagePath;
   final String label;
 
-  const MainServices({
+  const PositionedHomeServices({
     super.key,
     this.top,
     this.left,
@@ -107,39 +143,50 @@ class MainServices extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    return Positioned(
-      top: top?.h,
-      left: left?.w,
-      right: right?.w,
-      bottom: bottom?.h,
-      child: Column(
-        children: [
-          Image.asset(
-            assetImagePath,
-            width: 200.w,
-            height: 200.w,
-            fit: BoxFit.contain,
-          ),
-          Container(
-            margin: EdgeInsets.only(top: 8.h),
-            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.h),
-            decoration: BoxDecoration(
-              color: AppColors.primaryLight,
-              borderRadius: BorderRadius.circular(8.r),
-            ),
-            child: Text(
-              label,
-              style: AppTextStyles.bodyLarge(context).copyWith(
-                fontWeight: FontWeight.bold,
-                color: AppColors.textPrimary,
-              ),
-            ),
-          ),
-        ],
+  Widget build(BuildContext context) => Positioned(
+    top: top?.h,
+    left: left?.w,
+    right: right?.w,
+    bottom: bottom?.h,
+    child: HomeServices(assetImagePath: assetImagePath, label: label),
+  );
+}
+
+class HomeServices extends StatelessWidget {
+  final String assetImagePath;
+  final String label;
+
+  const HomeServices({
+    super.key,
+    required this.assetImagePath,
+    required this.label,
+  });
+
+  @override
+  Widget build(BuildContext context) => Column(
+    children: [
+      Image.asset(
+        assetImagePath,
+        width: 200.w,
+        height: 200.w,
+        fit: BoxFit.contain,
       ),
-    );
-  }
+      Container(
+        margin: EdgeInsets.only(top: 8.h),
+        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.h),
+        decoration: BoxDecoration(
+          color: AppColors.primaryLight,
+          borderRadius: BorderRadius.circular(8.r),
+        ),
+        child: Text(
+          label,
+          style: AppTextStyles.bodyLarge(
+            context,
+          ).copyWith(fontWeight: FontWeight.bold, color: AppColors.textPrimary),
+        ),
+      ),
+    ],
+  );
 }
 
 class _SocialButtons extends StatelessWidget {
@@ -147,7 +194,7 @@ class _SocialButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Row(
-    spacing: 16.w,
+    spacing: 18.w,
     children: [
       _SocialIcons(
         message: "LinkedIn",
@@ -187,11 +234,11 @@ class _SocialIcons extends StatelessWidget {
   Widget build(BuildContext context) => HoverTooltip(
     message: message,
     child: CircleAvatar(
-      radius: 18.w,
+      radius: 22,
       backgroundColor: AppColors.primary,
       child: IconButton(
         onPressed: onPressed,
-        icon: FaIcon(icon, size: 18.w),
+        icon: FaIcon(icon, size: 22),
         color: AppColors.surface,
       ),
     ),
@@ -268,6 +315,9 @@ class _HeroImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Positioned(
       bottom: 0,
+      right: (context.isTablet && MediaQuery.sizeOf(context).width < 750)
+          ? 0.w
+          : null,
       child: HoverTapMessage(
         messages: _messages,
         bubbleTop: 5,
