@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio/app/navigation/app_shell.dart';
 import 'package:portfolio/app/navigation/route_tracker.dart';
+import 'package:portfolio/app/theme/app_page_transition.dart';
 import 'package:portfolio/core/utils/logger_utils.dart';
 import 'package:portfolio/features/home/presentation/home_screen.dart';
 
@@ -27,25 +28,42 @@ final routerProvider = Provider<GoRouter>((ref) {
           GoRoute(
             name: '/',
             path: AppRoutes.home,
-            builder: (_, _) => const HomeScreen(),
+            pageBuilder: (_, state) {
+              return AppPageTransition.fadeSlideFromTop(
+                key: state.pageKey,
+                child: const HomeScreen(),
+              );
+            },
           ),
           GoRoute(
             name: 'home',
             path: AppRoutes.home,
-            builder: (_, _) => const HomeScreen(),
+            pageBuilder: (_, state) {
+              return AppPageTransition.fadeSlideFromTop(
+                key: state.pageKey,
+                child: const HomeScreen(),
+              );
+            },
           ),
           GoRoute(
             name: 'works',
             path: AppRoutes.works,
-            builder: (_, _) =>
-                Container(color: Colors.red), // Placeholder for WorksScreen
+            pageBuilder: (_, state) {
+              return AppPageTransition.fadeSlideFromTop(
+                key: state.pageKey,
+                child: Container(color: Colors.red),
+              );
+            },
           ),
           GoRoute(
             name: 'services',
             path: AppRoutes.services,
-            builder: (_, _) => Container(
-              color: Colors.green,
-            ), // Placeholder for ServicesScreen
+            pageBuilder: (_, state) {
+              return AppPageTransition.fadeSlideFromTop(
+                key: state.pageKey,
+                child: Container(color: Colors.green),
+              );
+            },
           ),
           GoRoute(
             name: 'aboutMe',

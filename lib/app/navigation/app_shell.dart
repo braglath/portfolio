@@ -11,6 +11,7 @@ class AppShell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.transparent,
       endDrawer: const AppSideMenu(),
       endDrawerEnableOpenDragGesture: !context.isDesktop,
       body: Column(

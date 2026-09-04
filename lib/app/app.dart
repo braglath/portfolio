@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:portfolio/app/navigation/app_routes.dart';
 import 'package:portfolio/app/theme/app_theme.dart';
+import 'package:portfolio/app/theme/app_background.dart';
 import 'package:portfolio/shared/widgets/global_loader.dart';
 import 'package:portfolio/shared/widgets/responsive_debug.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -37,6 +38,7 @@ class PortfolioApp extends ConsumerWidget {
               ],
               child: Stack(
                 children: [
+                  AppBackground(),
                   child!,
                   const GlobalLoader(),
                   if (kDebugMode) const ResponsiveDebug(),

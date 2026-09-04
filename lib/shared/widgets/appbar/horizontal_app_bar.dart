@@ -5,6 +5,7 @@ import 'package:portfolio/app/navigation/app_routes.dart';
 import 'package:portfolio/app/theme/app_colors.dart';
 import 'package:portfolio/app/theme/app_text_styles.dart';
 import 'package:portfolio/core/utils/logger_utils.dart';
+import 'package:portfolio/shared/widgets/appbar/lets_talk_button.dart';
 import 'package:portfolio/shared/widgets/appbar/logo_text.dart';
 
 class HorizontalAppBar extends StatelessWidget {
@@ -48,10 +49,7 @@ class HorizontalAppBar extends StatelessWidget {
             ],
           ),
           const Spacer(),
-          ElevatedButton(
-            onPressed: () {},
-            child: Text("Let's Talk", style: AppTextStyles.button(context)),
-          ),
+          LetsTalkButton(),
           // IconButton(onPressed: () {}, icon: const Icon(Icons.menu)),
         ],
       ),

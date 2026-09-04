@@ -11,7 +11,7 @@ class LogoText extends StatelessWidget {
     crossAxisAlignment: CrossAxisAlignment.end,
     children: [
       Text("B", style: AppTextStyles.displaySmall(context)),
-      Container(color: AppColors.textPrimary, width: 8, height: 8),
+      Container(color: AppColors.primary, width: 8, height: 8),
     ],
   );
 }
