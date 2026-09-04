@@ -16,8 +16,8 @@ class AppBackground extends StatelessWidget {
         // Large center circle
         Center(
           child: Container(
-            width: 500.w,
-            height: 500.w,
+            width: 500,
+            height: 500,
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
               color: AppColors.primaryLight,
