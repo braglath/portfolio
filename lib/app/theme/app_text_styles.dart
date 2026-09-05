@@ -1,119 +1,273 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/app/theme/app_colors.dart';
+import 'package:portfolio/core/responsive/responsive_font_size.dart';
 
 class AppTextStyles {
+  AppTextStyles._();
+
   // ============================================================
   // DISPLAY
   // ============================================================
 
-  // Main hero headline
-  static const TextStyle displayLarge = TextStyle(
-    fontSize: 96,
-    fontWeight: FontWeight.w700,
-    color: AppColors.textPrimary,
-    height: 1.0,
-  );
+  static TextStyle displayLarge(BuildContext context) {
+    final width = MediaQuery.sizeOf(context).width;
 
-  // Large statement / CTA headline
-  static const TextStyle displayMedium = TextStyle(
-    fontSize: 72,
-    fontWeight: FontWeight.w700,
-    color: AppColors.textPrimary,
-    height: 1.05,
-  );
+    final fontSize = responsiveFontSize(
+      width,
+      min: 52,
+      max: 96,
+      minWidth: 320,
+      maxWidth: 1440,
+    );
+
+    return TextStyle(
+      fontSize: fontSize,
+      fontWeight: FontWeight.w700,
+      color: AppColors.textPrimary,
+      height: 1.0,
+    );
+  }
+
+  static TextStyle displayMedium(BuildContext context) {
+    final width = MediaQuery.sizeOf(context).width;
+
+    final fontSize = responsiveFontSize(
+      width,
+      min: 40,
+      max: 72,
+      minWidth: 320,
+      maxWidth: 1440,
+    );
+
+    return TextStyle(
+      fontSize: fontSize,
+      fontWeight: FontWeight.w700,
+      color: AppColors.textPrimary,
+      height: 1.05,
+    );
+  }
+
+  static TextStyle displaySmall(BuildContext context) {
+    final width = MediaQuery.sizeOf(context).width;
+
+    final fontSize = responsiveFontSize(
+      width,
+      min: 26,
+      max: 46,
+      minWidth: 320,
+      maxWidth: 1440,
+    );
+
+    return TextStyle(
+      fontSize: fontSize,
+      fontWeight: FontWeight.bold,
+      color: AppColors.textPrimary,
+      height: 0.7,
+    );
+  }
 
   // ============================================================
   // HEADINGS
   // ============================================================
 
-  // Main section headings
-  static const TextStyle headingLarge = TextStyle(
-    fontSize: 48,
-    fontWeight: FontWeight.w700,
-    color: AppColors.textPrimary,
-    height: 1.1,
-  );
+  static TextStyle headingLarge(BuildContext context) {
+    final width = MediaQuery.sizeOf(context).width;
 
-  // Card / project headings
-  static const TextStyle headingMedium = TextStyle(
-    fontSize: 32,
-    fontWeight: FontWeight.w500,
-    color: AppColors.textPrimary,
-    height: 1.2,
-  );
+    final fontSize = responsiveFontSize(
+      width,
+      min: 32,
+      max: 48,
+      minWidth: 320,
+      maxWidth: 1440,
+    );
 
-  // Small section / component headings
-  static const TextStyle headingSmall = TextStyle(
-    fontSize: 24,
-    fontWeight: FontWeight.w500,
-    color: AppColors.textPrimary,
-    height: 1.25,
-  );
+    return TextStyle(
+      fontSize: fontSize,
+      fontWeight: FontWeight.w700,
+      color: AppColors.textPrimary,
+      height: 1.1,
+    );
+  }
+
+  static TextStyle headingMedium(BuildContext context) {
+    final width = MediaQuery.sizeOf(context).width;
+
+    final fontSize = responsiveFontSize(
+      width,
+      min: 24,
+      max: 32,
+      minWidth: 320,
+      maxWidth: 1440,
+    );
+
+    return TextStyle(
+      fontSize: fontSize,
+      fontWeight: FontWeight.w500,
+      color: AppColors.textPrimary,
+      height: 1.2,
+    );
+  }
+
+  static TextStyle headingSmall(BuildContext context) {
+    final width = MediaQuery.sizeOf(context).width;
+
+    final fontSize = responsiveFontSize(
+      width,
+      min: 20,
+      max: 24,
+      minWidth: 320,
+      maxWidth: 1440,
+    );
+
+    return TextStyle(
+      fontSize: fontSize,
+      fontWeight: FontWeight.w500,
+      color: AppColors.textPrimary,
+      height: 1.25,
+    );
+  }
 
   // ============================================================
   // BODY
   // ============================================================
 
-  // Hero supporting text / large introduction
-  static const TextStyle bodyLarge = TextStyle(
-    fontSize: 20,
-    fontWeight: FontWeight.w300,
-    color: AppColors.textSecondary,
-    height: 1.6,
-  );
+  static TextStyle bodyLarge(BuildContext context) {
+    final width = MediaQuery.sizeOf(context).width;
 
-  // Default body text
-  static const TextStyle bodyMedium = TextStyle(
-    fontSize: 16,
-    fontWeight: FontWeight.w400,
-    color: AppColors.textSecondary,
-    height: 1.6,
-  );
+    final fontSize = responsiveFontSize(
+      width,
+      min: 17,
+      max: 20,
+      minWidth: 320,
+      maxWidth: 1440,
+    );
 
-  // Secondary descriptions / supporting text
-  static const TextStyle bodySmall = TextStyle(
-    fontSize: 14,
-    fontWeight: FontWeight.w400,
-    color: AppColors.textSecondary,
-    height: 1.5,
-  );
+    return TextStyle(
+      fontSize: fontSize,
+      fontWeight: FontWeight.w300,
+      color: AppColors.textSecondary,
+      height: 1.6,
+    );
+  }
+
+  static TextStyle bodyMedium(BuildContext context) {
+    final width = MediaQuery.sizeOf(context).width;
+
+    final fontSize = responsiveFontSize(
+      width,
+      min: 15,
+      max: 16,
+      minWidth: 320,
+      maxWidth: 1440,
+    );
+
+    return TextStyle(
+      fontSize: fontSize,
+      fontWeight: FontWeight.w400,
+      color: AppColors.textSecondary,
+      height: 1.6,
+    );
+  }
+
+  static TextStyle bodySmall(BuildContext context) {
+    final width = MediaQuery.sizeOf(context).width;
+
+    final fontSize = responsiveFontSize(
+      width,
+      min: 13,
+      max: 14,
+      minWidth: 320,
+      maxWidth: 1440,
+    );
+
+    return TextStyle(
+      fontSize: fontSize,
+      fontWeight: FontWeight.w400,
+      color: AppColors.textSecondary,
+      height: 1.5,
+    );
+  }
 
   // ============================================================
   // UI
   // ============================================================
 
-  // Primary buttons
-  static const TextStyle button = TextStyle(
-    fontSize: 15,
-    fontWeight: FontWeight.w500,
-    color: AppColors.textPrimary,
-    letterSpacing: 0.6,
-  );
+  static TextStyle button(BuildContext context) {
+    final width = MediaQuery.sizeOf(context).width;
 
-  // Navigation / tabs / interactive elements
-  static const TextStyle labelMedium = TextStyle(
-    fontSize: 14,
-    fontWeight: FontWeight.w500,
-    color: AppColors.textPrimary,
-    letterSpacing: 0.3,
-  );
+    final fontSize = responsiveFontSize(
+      width,
+      min: 14,
+      max: 15,
+      minWidth: 320,
+      maxWidth: 1440,
+    );
 
-  // Labels / meta / hints
-  static const TextStyle label = TextStyle(
-    fontSize: 12,
-    fontWeight: FontWeight.w500,
-    color: AppColors.textSecondary,
-    letterSpacing: 0.4,
-  );
+    return TextStyle(
+      fontSize: fontSize,
+      fontWeight: FontWeight.w500,
+      color: AppColors.textOnPrimary,
+      letterSpacing: 0.6,
+    );
+  }
+
+  static TextStyle labelMedium(BuildContext context) {
+    final width = MediaQuery.sizeOf(context).width;
+
+    final fontSize = responsiveFontSize(
+      width,
+      min: 13,
+      max: 14,
+      minWidth: 320,
+      maxWidth: 1440,
+    );
+
+    return TextStyle(
+      fontSize: fontSize,
+      fontWeight: FontWeight.w500,
+      color: AppColors.textPrimary,
+      letterSpacing: 0.3,
+    );
+  }
+
+  static TextStyle label(BuildContext context) {
+    final width = MediaQuery.sizeOf(context).width;
+
+    final fontSize = responsiveFontSize(
+      width,
+      min: 11,
+      max: 12,
+      minWidth: 320,
+      maxWidth: 1440,
+    );
+
+    return TextStyle(
+      fontSize: fontSize,
+      fontWeight: FontWeight.w500,
+      color: AppColors.textSecondary,
+      letterSpacing: 0.4,
+    );
+  }
 
   // ============================================================
   // STATS
   // ============================================================
 
-  // Numbers / statistics
-  static const TextStyle stat = TextStyle(
-    fontSize: 24,
-    fontWeight: FontWeight.w700,
-    color: AppColors.textPrimary,
-  );
+  static TextStyle stat(BuildContext context) {
+    final width = MediaQuery.sizeOf(context).width;
+
+    final fontSize = responsiveFontSize(
+      width,
+      min: 20,
+      max: 24,
+      minWidth: 320,
+      maxWidth: 1440,
+    );
+
+    return TextStyle(
+      fontSize: fontSize,
+      fontWeight: FontWeight.w700,
+      color: AppColors.textPrimary,
+    );
+  }
 }
