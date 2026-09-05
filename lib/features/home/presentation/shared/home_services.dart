@@ -22,7 +22,7 @@ class GetHome {
 
     HomeServices(
       assetImagePath: AppAssetPath.optimization,
-      label: AppPresentationTexts.optimization  ,
+      label: AppPresentationTexts.optimization,
       size: size,
     ),
   ];
@@ -46,7 +46,7 @@ class HomeServices extends StatelessWidget {
       Image.asset(
         assetImagePath,
         width: size == null || size == 0 ? 200.w : size!.w,
-        height: size == null || size == 0 ? 200.w : size!.w,
+        height: size == null || size == 0 ? 200.h : size!.h,
         fit: BoxFit.contain,
       ),
       Container(

@@ -101,7 +101,7 @@ class _HeroSkillsDesktop extends StatelessWidget {
     children: [
       PositionedHomeServices(
         top: 0.h,
-        left: 100.w,
+        left: 200.w,
         right: 100.w,
         bottom: 200.h,
         assetImagePath: AppAssetPath.crossPlatform,
@@ -119,7 +119,7 @@ class _HeroSkillsDesktop extends StatelessWidget {
 
       PositionedHomeServices(
         top: 425.h,
-        left: 100.w,
+        left: 200.w,
         right: 50.w,
         bottom: 0.h,
         assetImagePath: AppAssetPath.optimization,
