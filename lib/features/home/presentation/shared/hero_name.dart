@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/app/theme/app_colors.dart';
 import 'package:portfolio/app/theme/app_text_styles.dart';
+import 'package:portfolio/core/constants/app_presentation_texts.dart';
 import 'package:portfolio/core/extensions/context_extensions.dart';
 
 class HeroName extends StatelessWidget {
@@ -11,7 +12,7 @@ class HeroName extends StatelessWidget {
     children: [
       // Offset outline
       Text(
-        'Braglath',
+        AppPresentationTexts.braglath,
         style: context.isMobile
             ? AppTextStyles.displayLarge(context).copyWith(
                 letterSpacing: 5,
@@ -30,7 +31,7 @@ class HeroName extends StatelessWidget {
       ),
       // Main text
       Text(
-        'Braglath',
+        AppPresentationTexts.braglath,
         style: context.isMobile
             ? AppTextStyles.displayLarge(
                 context,

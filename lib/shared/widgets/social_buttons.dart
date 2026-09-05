@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:portfolio/app/theme/app_colors.dart';
+import 'package:portfolio/core/constants/app_presentation_texts.dart';
 import 'package:portfolio/core/enums/app_enums.dart';
 import 'package:portfolio/shared/widgets/hover_tooltip.dart';
 
@@ -13,25 +14,25 @@ class SocialButtonsRow extends StatelessWidget {
     spacing: 18.w,
     children: [
       _SocialIcons(
-        message: "LinkedIn",
+        message: AppPresentationTexts.linkedIn,
         onPressed: () {},
         icon: FontAwesomeIcons.linkedinIn,
         toolTipPosition: ToolTipPosition.top,
       ),
       _SocialIcons(
-        message: "GitHub",
+        message: AppPresentationTexts.github,
         onPressed: () {},
         icon: FontAwesomeIcons.github,
         toolTipPosition: ToolTipPosition.top,
       ),
       _SocialIcons(
-        message: "Email",
+        message: AppPresentationTexts.email,
         onPressed: () {},
         icon: FontAwesomeIcons.envelope,
         toolTipPosition: ToolTipPosition.top,
       ),
       _SocialIcons(
-        message: "Download Resume",
+        message: AppPresentationTexts.downloadResume,
         onPressed: () {},
         icon: FontAwesomeIcons.file,
         toolTipPosition: ToolTipPosition.top,

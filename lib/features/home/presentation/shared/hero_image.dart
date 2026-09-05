@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:portfolio/core/constants/app_asset_path.dart';
+import 'package:portfolio/core/constants/app_presentation_texts.dart';
 import 'package:portfolio/core/extensions/context_extensions.dart';
 import 'package:portfolio/shared/widgets/drop_shadow.dart';
 import 'package:portfolio/shared/widgets/hover_tap_message.dart';
@@ -10,20 +11,20 @@ class HeroImage extends StatelessWidget {
   const HeroImage({super.key, this.fit = BoxFit.contain});
 
   static const _messages = [
-    "Hey! 👋\nLet's build something.",
-    "Nice to see you here! 🚀",
-    "Got an idea?\nLet's make it real.",
-    "Flutter + creativity = ❤️",
-    "Let's turn ideas into apps. ✨",
-    "Have a project in mind?\nLet's talk! 💬",
-    "Good ideas deserve\ngreat code. 💡",
-    "Let's build something\nawesome together! 🚀",
-    "Your next idea\ncould be an app. 📱",
-    "Ready to create\nsomething amazing? ✨",
-    "Let's make your idea\ncome to life. 🛠️",
-    "Think it. Build it.\nShip it. 🚀",
-    "Great products start\nwith great ideas. 💡",
-    "Need an app?\nI've got you covered. 😎",
+AppPresentationTexts.heroMessage1,
+AppPresentationTexts.heroMessage2,
+AppPresentationTexts.heroMessage3,
+AppPresentationTexts.heroMessage4,
+AppPresentationTexts.heroMessage5,
+AppPresentationTexts.heroMessage6,
+AppPresentationTexts.heroMessage7,
+AppPresentationTexts.heroMessage8,
+AppPresentationTexts.heroMessage9,
+AppPresentationTexts.heroMessage10,
+AppPresentationTexts.heroMessage11,
+AppPresentationTexts.heroMessage12,
+AppPresentationTexts.heroMessage13,
+AppPresentationTexts.heroMessage14,
   ];
 
   @override

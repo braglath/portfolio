@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:portfolio/app/navigation/app_routes.dart';
 import 'package:portfolio/app/theme/app_colors.dart';
 import 'package:portfolio/app/theme/app_text_styles.dart';
+import 'package:portfolio/core/constants/app_presentation_texts.dart';
 
 class NavItems extends StatelessWidget {
   final String currentRoute;
@@ -20,22 +21,22 @@ class NavItems extends StatelessWidget {
     children: [
       NavItemModel(
         isActive: currentRoute == AppRoutes.home,
-        label: 'Home',
+        label: AppPresentationTexts.home,
         onTap: () => context.go(AppRoutes.home),
       ),
       NavItemModel(
         isActive: currentRoute == AppRoutes.works,
-        label: 'Works',
+        label: AppPresentationTexts.works,
         onTap: () => context.go(AppRoutes.works),
       ),
       NavItemModel(
         isActive: currentRoute == AppRoutes.services,
-        label: 'Services',
+        label: AppPresentationTexts.services,
         onTap: () => context.go(AppRoutes.services),
       ),
       NavItemModel(
         isActive: currentRoute == AppRoutes.aboutMe,
-        label: 'About me',
+        label: AppPresentationTexts.aboutMe,
         onTap: () => context.go(AppRoutes.aboutMe),
       ),
     ],

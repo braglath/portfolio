@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:portfolio/core/constants/app_asset_path.dart';
+import 'package:portfolio/core/constants/app_presentation_texts.dart';
 import 'package:portfolio/core/extensions/context_extensions.dart';
 import 'package:portfolio/features/home/presentation/shared/about_description.dart';
 import 'package:portfolio/features/home/presentation/shared/hero_image.dart';
@@ -104,7 +105,7 @@ class _HeroSkillsDesktop extends StatelessWidget {
         right: 100.w,
         bottom: 200.h,
         assetImagePath: AppAssetPath.crossPlatform,
-        label: "Cross-Platform",
+        label: AppPresentationTexts.crossPlatform,
       ),
 
       PositionedHomeServices(
@@ -113,7 +114,7 @@ class _HeroSkillsDesktop extends StatelessWidget {
         bottom: 150.h,
         right: 0.w,
         assetImagePath: AppAssetPath.architecture,
-        label: "Architecture",
+        label: AppPresentationTexts.architecture,
       ),
 
       PositionedHomeServices(
@@ -122,7 +123,7 @@ class _HeroSkillsDesktop extends StatelessWidget {
         right: 50.w,
         bottom: 0.h,
         assetImagePath: AppAssetPath.optimization,
-        label: "Optimization",
+        label: AppPresentationTexts.optimization,
       ),
     ],
   );
