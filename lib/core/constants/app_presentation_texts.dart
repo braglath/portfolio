@@ -4,7 +4,7 @@ class AppPresentationTexts {
   static const String b = "B";
   static const String braglath = "Braglath";
   static const String heroShortAboutMe =
-      "A Flutter developer and Technical Lead with 10 years of software development experience, passionate about turning ideas into scalable, high-performance digital products through clean architecture and thoughtful engineering.";
+      "A Technical Lead and former IBM employee with 10 years of experience building scalable, high-performance digital products through clean architecture and thoughtful engineering.";
 
   static const String heroMessage1 = "Hey! 👋\nLet's build something.";
   static const String heroMessage2 = "Nice to see you here! 🚀";
