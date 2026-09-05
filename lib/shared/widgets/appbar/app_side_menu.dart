@@ -6,6 +6,7 @@ import 'package:portfolio/app/theme/app_colors.dart';
 import 'package:portfolio/app/theme/app_text_styles.dart';
 import 'package:portfolio/core/constants/app_presentation_texts.dart';
 import 'package:portfolio/core/extensions/context_extensions.dart';
+import 'package:portfolio/shared/widgets/social_buttons.dart';
 
 class AppSideMenu extends StatelessWidget {
   const AppSideMenu({super.key});
@@ -50,7 +51,9 @@ class AppSideMenu extends StatelessWidget {
                   route: item.route,
                   isActive: currentRoute == item.route,
                 ),
-              const Spacer(),
+              Spacer(),
+              SocialButtonsColumn(),
+              SizedBox(height: 32.h),
               ElevatedButton(
                 onPressed: () => Scaffold.of(context).closeEndDrawer(),
                 child: Text(

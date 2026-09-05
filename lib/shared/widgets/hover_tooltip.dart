@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:portfolio/app/theme/app_colors.dart';
 import 'package:portfolio/app/theme/app_text_styles.dart';
+import 'package:portfolio/core/enums/app_enums.dart';
 
 class HoverTooltip extends StatefulWidget {
-  const HoverTooltip({super.key, required this.message, required this.child});
+  const HoverTooltip({
+    super.key,
+    required this.message,
+    required this.child,
+    this.toolTipPosition = ToolTipPosition.top,
+  });
 
   final String message;
   final Widget child;
+  final ToolTipPosition toolTipPosition;
 
   @override
   State<HoverTooltip> createState() => _HoverTooltipState();
@@ -28,7 +35,8 @@ class _HoverTooltipState extends State<HoverTooltip> {
           widget.child,
 
           Positioned(
-            bottom: 58,
+            bottom: widget.toolTipPosition == ToolTipPosition.top ? 58 : null,
+            left: widget.toolTipPosition == ToolTipPosition.right ? 58 : null,
             child: IgnorePointer(
               child: AnimatedOpacity(
                 opacity: _isHovered ? 1 : 0,
@@ -38,7 +46,10 @@ class _HoverTooltipState extends State<HoverTooltip> {
                   offset: _isHovered ? Offset.zero : const Offset(0, 0.15),
                   duration: const Duration(milliseconds: 180),
                   curve: Curves.easeOutCubic,
-                  child: _TooltipBubble(message: widget.message),
+                  child: _TooltipBubble(
+                    message: widget.message,
+                    widget.toolTipPosition,
+                  ),
                 ),
               ),
             ),
@@ -50,9 +61,10 @@ class _HoverTooltipState extends State<HoverTooltip> {
 }
 
 class _TooltipBubble extends StatelessWidget {
-  const _TooltipBubble({required this.message});
+  const _TooltipBubble(this.toolTipPosition, {required this.message});
 
   final String message;
+  final ToolTipPosition toolTipPosition;
 
   @override
   Widget build(BuildContext context) {
@@ -73,10 +85,11 @@ class _TooltipBubble extends StatelessWidget {
           ),
         ),
 
-        CustomPaint(
-          size: const Size(10, 5),
-          painter: _TooltipArrowPainter(color: AppColors.textPrimary),
-        ),
+        if (toolTipPosition == ToolTipPosition.top)
+          CustomPaint(
+            size: const Size(10, 5),
+            painter: _TooltipArrowPainter(color: AppColors.textPrimary),
+          ),
       ],
     );
   }

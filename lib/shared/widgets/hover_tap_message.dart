@@ -108,26 +108,6 @@ class _HoverTapMessageState extends State<HoverTapMessage> {
           clipBehavior: Clip.none,
           alignment: Alignment.center,
           children: [
-            // Message bubble
-            if (_hasMessages)
-              Positioned(
-                top: widget.bubbleTop.h,
-                right: widget.bubbleRight.w,
-                child: IgnorePointer(
-                  child: AnimatedOpacity(
-                    opacity: _isActive ? 1 : 0,
-                    duration: const Duration(milliseconds: 250),
-                    curve: Curves.easeOut,
-                    child: AnimatedScale(
-                      scale: _isActive ? 1 : 0.8,
-                      duration: const Duration(milliseconds: 300),
-                      curve: Curves.easeOutBack,
-                      child: _MessageBubble(message: _currentMessage!),
-                    ),
-                  ),
-                ),
-              ),
-
             // Child
             AnimatedScale(
               scale: _isActive ? widget.hoverScale : 1.0,
@@ -147,6 +127,26 @@ class _HoverTapMessageState extends State<HoverTapMessage> {
                 ),
               ),
             ),
+
+            // Message bubble
+            if (_hasMessages)
+              Positioned(
+                top: widget.bubbleTop.h,
+                right: widget.bubbleRight.w,
+                child: IgnorePointer(
+                  child: AnimatedOpacity(
+                    opacity: _isActive ? 1 : 0,
+                    duration: const Duration(milliseconds: 250),
+                    curve: Curves.easeOut,
+                    child: AnimatedScale(
+                      scale: _isActive ? 1 : 0.8,
+                      duration: const Duration(milliseconds: 300),
+                      curve: Curves.easeOutBack,
+                      child: _MessageBubble(message: _currentMessage!),
+                    ),
+                  ),
+                ),
+              ),
           ],
         ),
       ),

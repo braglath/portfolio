@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:portfolio/app/theme/app_colors.dart';
+import 'package:portfolio/core/extensions/context_extensions.dart';
 
 class AppBackground extends StatelessWidget {
   const AppBackground({super.key});
@@ -14,13 +15,16 @@ class AppBackground extends StatelessWidget {
         const ColoredBox(color: AppColors.background),
 
         // Large center circle
-        Center(
-          child: Container(
-            width: 500,
-            height: 500,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: AppColors.primaryLight,
+        Positioned(
+          bottom: context.isMobile ? 0 : null,
+          child: Center(
+            child: Container(
+              width: 500,
+              height: 500,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                color: AppColors.primaryLight,
+              ),
             ),
           ),
         ),
