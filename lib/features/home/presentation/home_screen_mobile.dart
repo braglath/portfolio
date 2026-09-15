@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:portfolio/app/theme/app_colors.dart';
+import 'package:portfolio/core/extensions/wiget_extensions.dart';
 import 'package:portfolio/features/home/presentation/shared/about_description.dart';
 import 'package:portfolio/features/home/presentation/shared/hero_image.dart';
 import 'package:portfolio/features/home/presentation/shared/hero_name.dart';
@@ -81,12 +82,7 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 56.h),
-
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: IAmText(),
-            ),
-
+            IAmText().paddingSymmetric(horizontal: 16),
             Stack(
               children: [
                 SizedBox(
@@ -100,7 +96,6 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
                 const HeroImage(),
               ],
             ),
-
             Container(
               color: AppColors.shadow,
               width: double.infinity,
@@ -109,35 +104,23 @@ class _HomeScreenMobileState extends State<HomeScreenMobile> {
                 spacing: 8.h,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 16.h,
-                      vertical: 8.h,
-                    ),
-                    child: AboutDescription(),
+                  AboutDescription().paddingSymmetric(
+                    horizontal: 16.h,
+                    vertical: 8.h,
                   ),
+                  Column(
+                    children: GetHome.services(isMobile: true),
+                  ).paddingSymmetric(horizontal: 24.0),
+                  SizedBox(height: 56.h),
                   Row(
                     spacing: 16.h,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: GetHome.services(size: 300),
-                  ),
-                  SizedBox(height: 8.h),
-                  Padding(
-                    padding: EdgeInsets.all(16.h),
-                    child: Row(
-                      spacing: 16.h,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const SocialButtonsRow(),
-                        KeyedSubtree(
-                          key: _letsTalkKey,
-                          child: LetsTalkButton(),
-                        ),
-                      ],
-                    ),
-                  ),
+                    children: [
+                      const SocialButtonsRow(),
+                      KeyedSubtree(key: _letsTalkKey, child: LetsTalkButton()),
+                    ],
+                  ).paddingAll(16.h),
                   SizedBox(height: 8.h),
                   Container(
                     color: AppColors.overlay,
