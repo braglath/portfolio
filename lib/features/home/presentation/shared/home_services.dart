@@ -7,25 +7,43 @@ import 'package:portfolio/core/constants/app_presentation_texts.dart';
 
 class GetHome {
   GetHome._();
-  static List<HomeServices> services({double? size}) => [
-    HomeServices(
-      assetImagePath: AppAssetPath.crossPlatform,
-      label: AppPresentationTexts.crossPlatform,
-      size: size,
-    ),
+  static List<Widget> services({double? size, bool isMobile = false}) =>
+      isMobile
+      ? [
+          HomeServicesMobile(
+            assetImagePath: AppAssetPath.crossPlatform,
+            label: AppPresentationTexts.crossPlatform,
+          ),
 
-    HomeServices(
-      assetImagePath: AppAssetPath.architecture,
-      label: AppPresentationTexts.architecture,
-      size: size,
-    ),
+          HomeServicesMobile(
+            assetImagePath: AppAssetPath.architecture,
+            label: AppPresentationTexts.architecture,
+          ),
 
-    HomeServices(
-      assetImagePath: AppAssetPath.optimization,
-      label: AppPresentationTexts.optimization,
-      size: size,
-    ),
-  ];
+          HomeServicesMobile(
+            assetImagePath: AppAssetPath.optimization,
+            label: AppPresentationTexts.optimization,
+          ),
+        ]
+      : [
+          HomeServices(
+            assetImagePath: AppAssetPath.crossPlatform,
+            label: AppPresentationTexts.crossPlatform,
+            size: size,
+          ),
+
+          HomeServices(
+            assetImagePath: AppAssetPath.architecture,
+            label: AppPresentationTexts.architecture,
+            size: size,
+          ),
+
+          HomeServices(
+            assetImagePath: AppAssetPath.optimization,
+            label: AppPresentationTexts.optimization,
+            size: size,
+          ),
+        ];
 }
 
 class HomeServices extends StatelessWidget {
@@ -59,6 +77,38 @@ class HomeServices extends StatelessWidget {
         child: Text(
           label,
           style: AppTextStyles.bodyLarge(
+            context,
+          ).copyWith(fontWeight: FontWeight.bold, color: AppColors.textPrimary),
+        ),
+      ),
+    ],
+  );
+}
+
+class HomeServicesMobile extends StatelessWidget {
+  final String assetImagePath;
+  final String label;
+  const HomeServicesMobile({
+    super.key,
+    required this.assetImagePath,
+    required this.label,
+  });
+
+  @override
+  Widget build(BuildContext context) => Stack(
+    alignment: Alignment.center,
+    children: [
+      Image.asset(assetImagePath, fit: BoxFit.contain),
+      Container(
+        margin: EdgeInsets.only(top: 8.h),
+        padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.h),
+        decoration: BoxDecoration(
+          color: AppColors.primaryLight,
+          borderRadius: BorderRadius.circular(8.r),
+        ),
+        child: Text(
+          label,
+          style: AppTextStyles.headingLarge(
             context,
           ).copyWith(fontWeight: FontWeight.bold, color: AppColors.textPrimary),
         ),
