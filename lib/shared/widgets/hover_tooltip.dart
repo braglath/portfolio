@@ -20,42 +20,79 @@ class HoverTooltip extends StatefulWidget {
 }
 
 class _HoverTooltipState extends State<HoverTooltip> {
-  bool _isHovered = false;
+  bool _isVisible = false;
+
+  void _showTooltip() {
+    if (!_isVisible) {
+      setState(() => _isVisible = true);
+    }
+  }
+
+  void _hideTooltip() {
+    if (_isVisible) {
+      setState(() => _isVisible = false);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      onEnter: (_) => setState(() => _isHovered = true),
-      onExit: (_) => setState(() => _isHovered = false),
-      child: Stack(
-        clipBehavior: Clip.none,
-        alignment: Alignment.topCenter,
-        children: [
-          widget.child,
-
-          Positioned(
-            bottom: widget.toolTipPosition == ToolTipPosition.top ? 58 : null,
-            left: widget.toolTipPosition == ToolTipPosition.right ? 58 : null,
-            child: IgnorePointer(
-              child: AnimatedOpacity(
-                opacity: _isHovered ? 1 : 0,
-                duration: const Duration(milliseconds: 180),
-                curve: Curves.easeOut,
-                child: AnimatedSlide(
-                  offset: _isHovered ? Offset.zero : const Offset(0, 0.15),
-                  duration: const Duration(milliseconds: 180),
-                  curve: Curves.easeOutCubic,
-                  child: _TooltipBubble(
-                    message: widget.message,
-                    widget.toolTipPosition,
-                  ),
-                ),
-              ),
+    return Stack(
+      clipBehavior: Clip.none,
+      children: [
+        // Tap anywhere outside to hide
+        if (_isVisible)
+          Positioned.fill(
+            child: GestureDetector(
+              behavior: HitTestBehavior.translucent,
+              onTap: _hideTooltip,
+              child: const SizedBox.expand(),
             ),
           ),
-        ],
-      ),
+
+        MouseRegion(
+          cursor: SystemMouseCursors.click,
+          onEnter: (_) => _showTooltip(),
+          onExit: (_) => _hideTooltip(),
+          child: GestureDetector(
+            onLongPress: _showTooltip,
+            onTap: _hideTooltip,
+            child: Stack(
+              clipBehavior: Clip.none,
+              alignment: Alignment.topCenter,
+              children: [
+                widget.child,
+
+                Positioned(
+                  bottom: widget.toolTipPosition == ToolTipPosition.top
+                      ? 58
+                      : null,
+                  left: widget.toolTipPosition == ToolTipPosition.right
+                      ? 58
+                      : null,
+                  child: IgnorePointer(
+                    child: AnimatedOpacity(
+                      opacity: _isVisible ? 1 : 0,
+                      duration: const Duration(milliseconds: 180),
+                      curve: Curves.easeOut,
+                      child: AnimatedSlide(
+                        offset: _isVisible
+                            ? Offset.zero
+                            : const Offset(0, 0.15),
+                        duration: const Duration(milliseconds: 180),
+                        curve: Curves.easeOutCubic,
+                        child: _TooltipBubble(
+                          message: widget.message,
+                          widget.toolTipPosition,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

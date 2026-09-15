@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_riverpod/legacy.dart';
 
-final globalLoaderProvider = StateProvider<bool>((ref) => false);
-
-class GlobalLoader extends ConsumerWidget {
-  const GlobalLoader({super.key});
+class InitialPageLoader extends ConsumerWidget {
+  const InitialPageLoader({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isLoading = ref.watch(globalLoaderProvider);
-
-    if (!isLoading) return const SizedBox.shrink();
-
     return Stack(
       children: [
         // Dim background

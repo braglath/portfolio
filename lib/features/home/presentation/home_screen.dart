@@ -8,5 +8,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) =>
+      // AppInitialPageLoader(
+      // child:
       context.isMobile ? HomeScreenMobile() : HomeScreenDesktopAndTablet();
+  // );
 }

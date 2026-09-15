@@ -51,7 +51,15 @@ final routerProvider = Provider<GoRouter>((ref) {
             pageBuilder: (_, state) {
               return AppPageTransition.fadeSlideFromTop(
                 key: state.pageKey,
-                child: Container(color: Colors.red),
+                child: Container(
+                  color: Colors.red,
+                  child: Center(
+                    child: Text(
+                      "Under Development",
+                      style: TextStyle(fontSize: 28, color: Colors.white),
+                    ),
+                  ),
+                ),
               );
             },
           ),
@@ -61,15 +69,30 @@ final routerProvider = Provider<GoRouter>((ref) {
             pageBuilder: (_, state) {
               return AppPageTransition.fadeSlideFromTop(
                 key: state.pageKey,
-                child: Container(color: Colors.green),
+                child: Container(
+                  color: Colors.green,
+                  child: Center(
+                    child: Text(
+                      "Under Development",
+                      style: TextStyle(fontSize: 28, color: Colors.white),
+                    ),
+                  ),
+                ),
               );
             },
           ),
           GoRoute(
             name: 'aboutMe',
             path: AppRoutes.aboutMe,
-            builder: (_, _) =>
-                Container(color: Colors.blue), // Placeholder for AboutMeScreen
+            builder: (_, _) => Container(
+              color: Colors.blue,
+              child: Center(
+                child: Text(
+                  "Under Development",
+                  style: TextStyle(fontSize: 28, color: Colors.white),
+                ),
+              ),
+            ), // Placeholder for AboutMeScreen
           ),
         ],
       ),
