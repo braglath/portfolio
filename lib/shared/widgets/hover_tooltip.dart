@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:portfolio/app/theme/app_colors.dart';
 import 'package:portfolio/app/theme/app_text_styles.dart';
@@ -21,17 +23,32 @@ class HoverTooltip extends StatefulWidget {
 
 class _HoverTooltipState extends State<HoverTooltip> {
   bool _isVisible = false;
+  Timer? _hideTimer;
 
   void _showTooltip() {
+    _hideTimer?.cancel();
+
     if (!_isVisible) {
       setState(() => _isVisible = true);
     }
+
+    // Auto hide after 3 seconds from being shown/refreshed.
+    _hideTimer = Timer(const Duration(seconds: 3), _hideTooltip);
   }
 
   void _hideTooltip() {
-    if (_isVisible) {
+    _hideTimer?.cancel();
+    _hideTimer = null;
+
+    if (_isVisible && mounted) {
       setState(() => _isVisible = false);
     }
+  }
+
+  @override
+  void dispose() {
+    _hideTimer?.cancel();
+    super.dispose();
   }
 
   @override
@@ -39,7 +56,7 @@ class _HoverTooltipState extends State<HoverTooltip> {
     return Stack(
       clipBehavior: Clip.none,
       children: [
-        // Tap anywhere outside to hide
+        // Tap anywhere outside the child to hide.
         if (_isVisible)
           Positioned.fill(
             child: GestureDetector(
@@ -55,7 +72,10 @@ class _HoverTooltipState extends State<HoverTooltip> {
           onExit: (_) => _hideTooltip(),
           child: GestureDetector(
             onLongPress: _showTooltip,
+
+            // Tapping the child also hides the tooltip.
             onTap: _hideTooltip,
+
             child: Stack(
               clipBehavior: Clip.none,
               alignment: Alignment.topCenter,
@@ -121,7 +141,6 @@ class _TooltipBubble extends StatelessWidget {
             ).copyWith(color: AppColors.surface, fontWeight: FontWeight.w500),
           ),
         ),
-
         if (toolTipPosition == ToolTipPosition.top)
           CustomPaint(
             size: const Size(10, 5),
